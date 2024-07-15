@@ -3,6 +3,7 @@ import { Routes,Route } from 'react-router-dom';
 import ProductAll from './page/ProductAll';
 import Login from './page/Login';
 import ProductDetail from './page/ProductDetail';
+import Navbar from './component/Navbar';
 
 // 1. 전체 상품 페이지, 로그인 페이지, 상품 상세 페이지
 // 2. 전체 상품 페이지에서는 전체 상품을 볼 수 있다.
@@ -16,6 +17,7 @@ import ProductDetail from './page/ProductDetail';
 function App() {
   return (
     <div>
+      <Navbar/> 
       <Routes>
         <Route path='/' element={<ProductAll/>}/>
         <Route path='/login' element={<Login/>}/>
