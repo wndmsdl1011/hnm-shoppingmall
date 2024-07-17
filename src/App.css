@@ -2,10 +2,17 @@
     display: flex;
     justify-content: flex-end;
     margin: 20px;
+    cursor:pointer;
 }
+
 .login-text {
-    margin-left: 7px;
+    margin-left: 10px;
 }
+
+.logo-img:hover{
+    cursor: pointer;
+}
+
 .nav-section {
     display: flex;
     justify-content: center;
@@ -29,11 +36,59 @@
 .search-box{
     position: absolute;
     right: 20px;
+    padding-bottom: 3px;
+    border-bottom: 1px solid black;
 }
-.search-box input{
-    border: none;
-    border-bottom: 1px solid #000;
-    outline: none;
-    margin-left: 5px;
-    padding: 5px;
+
+.search-icon{
+    width: 13px;
+}
+
+input{
+    border:none;
+    padding-left: 6px;
+}
+
+.choice-title{
+    font-size: 11px;
+}
+
+.new-title {
+    font-size: 12px;
+}
+
+.product-card:hover{
+    transform: scale(1.1);
+}
+
+.user-icon {
+    margin-top: 4px;
+}
+
+.nav-section {
+    margin-bottom: 2em;
+}
+
+.product-img {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.product-title {
+    font-size: 20px;
+    margin-bottom: 0.5em;
+}
+
+.product-price {
+    font-size: 22px;
+    margin-bottom: 0.5em;
+}
+
+.product-choice {
+    font-size: 11px;
+    margin-bottom: 2em;
+}
+
+.size-button {
+    margin-bottom: 1em;
 }
