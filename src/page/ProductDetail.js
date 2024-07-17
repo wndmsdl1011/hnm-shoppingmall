@@ -7,7 +7,7 @@ const ProductDetail = () => {
   let { id } = useParams()
   const [product, setProduct] = useState(null)
   const getProductDetail = async () => {
-    let url = `http://localhost:5000/products/${id}`
+    let url = `https://my-json-server.typicode.com/wndmsdl1011/hnm-shoppingmall/products/${id}`
     let response = await fetch(url)
     let data = await response.json()
     setProduct(data);
@@ -30,7 +30,6 @@ const ProductDetail = () => {
               <Dropdown.Toggle variant="outline-dark" id="dropdown-basic">
                 사이즈 선택
               </Dropdown.Toggle>
-
               <Dropdown.Menu>
                 <Dropdown.Item href="#/action-1">S</Dropdown.Item>
                 <Dropdown.Item href="#/action-2">M</Dropdown.Item>
