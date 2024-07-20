@@ -1,14 +1,13 @@
 import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUser } from '@fortawesome/free-regular-svg-icons';
 import { faBars, faSearch } from '@fortawesome/free-solid-svg-icons';
-import { Link } from "react-router-dom";
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
+import { SlBag, SlUser, SlHeart, SlOptions } from "react-icons/sl";
 
 const Navbar = ({ authenticate, setAuthenticate }) => {
-    const menuList = ["여성", "Divided", "남성", "신생아/유아", "아동", "H&M Home", "Sale", "지속가능성"];
-    
+    const menuList = ["Women", "Men", "Baby", "Kids", "H&M Home", "Sport", "Sale", "지속가능성"];
     const navigate = useNavigate();
+    const location = useLocation(); // 현재 경로를 가져옵니다.
     const [width, setWidth] = useState(0);
 
     const goToLogin = () => {
@@ -25,12 +24,7 @@ const Navbar = ({ authenticate, setAuthenticate }) => {
         navigate('/');
     };
 
-    const search = (event) => {
-        if (event.key === "Enter") {
-            let keyword = event.target.value;
-            navigate(`/?q=${keyword}`);
-        }
-    };
+    const isLoginOrProductDetailPage = location.pathname === '/login' || location.pathname.includes('/product/');
 
     return (
         <div>
@@ -44,27 +38,45 @@ const Navbar = ({ authenticate, setAuthenticate }) => {
                     ))}
                 </div>
             </div>
-            <div className="nav-header">
-                <div className="burger-menu hide">
-                    <FontAwesomeIcon icon={faBars} onClick={() => setWidth(250)} />
+            <div className='nav-box'>
+                <div className="nav-header">
+                    <div className="burger-menu hide">
+                        <FontAwesomeIcon icon={faBars} onClick={() => setWidth(250)} />
+                    </div>
+                    {authenticate ? (
+                        <div className='login-button' onClick={() => setAuthenticate(false)}>
+                            <SlUser className="user-icon" />
+                            <div className='login-text'>로그아웃</div>
+                        </div>
+                    ) : (
+                        <div className='login-button' onClick={goToLogin}>
+                            <SlUser className="user-icon" />
+                            <div className='login-text'>로그인</div>
+                        </div>
+                    )}
+                    <div className='heart-button'>
+                        <SlHeart className="heart-icon" />
+                        <div className='heart-text'>즐겨찾기</div>
+                    </div>
+                    <div className='shoppingBag-button'>
+                        <SlBag className="shoppingBag-icon" />
+                        <div className='shoppingBag-text'>쇼핑백</div>
+                    </div>
                 </div>
-                {authenticate ? (
-                    <div className='login-button' onClick={() => setAuthenticate(false)}>
-                        <FontAwesomeIcon className="user-icon" icon={faUser} />
-                        <div className='login-text'>로그아웃</div>
-                    </div>
-                ) : (
-                    <div className='login-button' onClick={goToLogin}>
-                        <FontAwesomeIcon className="user-icon" icon={faUser} />
-                        <div className='login-text'>로그인</div>
-                    </div>
-                )}
+            </div>
+            <div className='logo-container'>
+                <div className='left-menu'>
+                    <div className='service-text'>고객 서비스</div>
+                    <div className='service-text'>뉴스레터</div>
+                    <div className='service-text'>매장찾기</div>
+                    <div className='service-text'><SlOptions /></div>
+                </div>
+                <div className='nav-section'>
+                    <img width={65} className='logo-img' onClick={goToProductAll}
+                        src='https://i.namu.wiki/i/LLWfI6IrEJwLA8ZdZNuhvO_Jz8kDTnLQazYsoittWdQSGXmCBo3rS7jZXVdTOprIWVN5X5uK8d2kFin_cD5JI7QffaWJP7iWCXXkjsCw2DZ7lf-J0vZtkrWH2f7gbo1nzegV9Y0DhFkOxAz71ZkOmw.svg' />
+                </div>
             </div>
 
-            <div className='nav-section'>
-                <img width={100} className='logo-img' onClick={goToProductAll}
-                    src='https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/H%26M-Logo.svg/1064px-H%26M-Logo.svg.png' />
-            </div>
             <div className='menu-area'>
                 <ul className='menu-list'>
                     {menuList.map((menu, index) => (
@@ -73,9 +85,20 @@ const Navbar = ({ authenticate, setAuthenticate }) => {
                 </ul>
                 <div className='search-box'>
                     <FontAwesomeIcon className="search-icon" icon={faSearch} />
-                    <input type='text' placeholder='제품 검색' onKeyPress={onCheckEnter} />
+                    <input type='text' placeholder='검색' onKeyPress={onCheckEnter} />
                 </div>
             </div>
+
+            {!isLoginOrProductDetailPage && (
+                <>
+                    <div className='discount-area'>
+                        <div>회원 혜택:3만원 이상 무료배송 & 첫구매 10% 할인</div>
+                    </div>
+                    <div className='d1image'>
+                        <img width={1200} className='newArrival-img' src='img/detail1.png' alt="Detail" />
+                    </div>
+                </>
+            )}
         </div>
     );
 };

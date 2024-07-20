@@ -1,11 +1,60 @@
-.login-button {
+.nav-box {
     display: flex;
     justify-content: flex-end;
-    margin: 20px;
+    align-items: center;
+    padding: 10px;
+    background-color: #fff;
+}
+
+.left-menu {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 10px;
+    background-color: #fff;
+}
+
+.login-button,
+.heart-button,
+.shoppingBag-button {
+    display: flex;
+    justify-content: flex-end;
+    margin: 7px;
     cursor: pointer;
 }
 
-.login-text {
+.service-text {
+    display: flex;
+    margin: 7px;
+    cursor: pointer;
+}
+
+.discount-area {
+    display: flex;
+    justify-content: center;
+    margin: 10px;
+    margin-bottom: 3em;
+    font-size: small;
+}
+
+.d1image {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 3em;
+}
+
+
+.logo-img {
+    margin-top: -50px;
+}
+
+.logo-container {
+    margin-top: -2.7em;
+}
+
+.login-text,
+.heart-text,
+.shoppingBag-text {
     margin-left: 10px;
 }
 
@@ -25,17 +74,18 @@
 }
 
 .menu-list li {
-    padding: 10px;
+    padding: 17px;
 }
 
 .menu-area {
     display: flex;
     justify-content: center;
+    margin-top: -1em;
 }
 
 .search-box {
     position: absolute;
-    right: 20px;
+    right: 40px;
     padding-bottom: 3px;
     border-bottom: 1px solid black;
 }
@@ -61,8 +111,10 @@ input {
     transform: scale(1.1);
 }
 
-.user-icon {
-    margin-top: 4px;
+.user-icon,
+.heart-icon,
+.shoppingBag-icon {
+    font-size: 1.3em;
 }
 
 .nav-section {
@@ -92,7 +144,41 @@ input {
 .size-button {
     margin-bottom: 1em;
 }
+
 @media screen and (max-width: 63rem) {
+    .nav-section {
+        justify-content: flex-start;
+        padding: 10px
+    }
+
+    .logo-img {
+        margin-top: -1.5em;
+        height: 30px;
+    }
+
+    .menu-area,
+    .search-box,
+    .left-menu {
+        display: none;
+    }
+
+    .burger-menu {
+        visibility: visible;
+        justify-content: flex-start;
+    }
+
+    .search-icon {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .login-button div,
+    .heart-button div,
+    .shoppingBag-button div {
+        display: none;
+    }
+
     .menu-area {
         display: none;
     }
@@ -101,8 +187,28 @@ input {
         display: none;
     }
 
-    .burger-menu {
-        visibility: visible;
+    .product-img,
+    .productDetail-img {
+        width: 100%;
+        max-width: 100%;
+        /* 모바일 화면에서는 최대 너비를 100%로 설정 */
+        margin-bottom: 20px;
+    }
+
+    .newArrival-img {
+        width: 100%;
+        max-width: 100%;
+        /* 모바일 화면에서는 최대 너비를 100%로 설정 */
+        margin-bottom: 20px;
+        height: 100vw;
+        /* 높이를 화면 너비와 동일하게 설정하여 정사각형에 가깝게 만듦 */
+        object-fit: cover;
+        /* 이미지를 컨테이너에 맞추되 잘릴 수 있음 */
+        padding: 20px;
+    }
+
+    .product-card {
+        padding: 10px;
     }
 }
 
@@ -111,6 +217,7 @@ input {
         visibility: hidden;
     }
 }
+
 .side-menu {
     height: 100%;
     width: 250px;
@@ -118,7 +225,7 @@ input {
     z-index: 1;
     top: 0;
     left: 0;
-    background-color: burlywood;
+    background-color: white;
     overflow-x: hidden;
     transition: 0.5s;
     padding-top: 60px;
