@@ -1,36 +1,37 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 import ProductCard from '../component/ProductCard';
 import { useSearchParams } from 'react-router-dom';
+import { productAction } from '../redux/actions/productAction'; // Updated import path
+import { useDispatch, useSelector } from 'react-redux';
 
 const ProductAll = () => {
-  const [productList, setProductList] = useState([]);
-  const [query, setQuery] = useSearchParams()
+  const productList = useSelector(state=>state.product.productList)
+  const [query, setQuery] = useSearchParams();
+  const dispatch = useDispatch();
 
-  const getProducts = async () => {
+  const getProducts = () => {
     let searchQuery = query.get('q') || '';
-    let url = `https://my-json-server.typicode.com/wndmsdl1011/hnm-shoppingmall/products?q=${searchQuery}`
-    let response = await fetch(url)
-    let data = await response.json()
-    setProductList(data)
-  }
-  useEffect(()=>{
-    getProducts()
-  },[query])
-  
+    dispatch(productAction.getProducts(searchQuery));
+  };
+
+  useEffect(() => {
+    getProducts();
+  }, [query]);
+
   return (
     <div>
       <Container>
         <Row>
-          {productList.map((menu) => ( 
-            <Col lg={3}>
-              <ProductCard item={menu}/>
+          {productList.map((menu) => (
+            <Col lg={3} key={menu.id}>
+              <ProductCard item={menu} />
             </Col>
           ))}
         </Row>
       </Container>
     </div>
-  )
-}
+  );
+};
 
-export default ProductAll
+export default ProductAll;

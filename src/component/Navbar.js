@@ -73,7 +73,7 @@ const Navbar = ({ authenticate, setAuthenticate }) => {
                 </div>
                 <div className='nav-section'>
                     <img width={65} className='logo-img' onClick={goToProductAll}
-                        src='https://i.namu.wiki/i/LLWfI6IrEJwLA8ZdZNuhvO_Jz8kDTnLQazYsoittWdQSGXmCBo3rS7jZXVdTOprIWVN5X5uK8d2kFin_cD5JI7QffaWJP7iWCXXkjsCw2DZ7lf-J0vZtkrWH2f7gbo1nzegV9Y0DhFkOxAz71ZkOmw.svg' />
+                        src='https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/H%26M-Logo.svg/709px-H%26M-Logo.svg.png' />
                 </div>
             </div>
 
